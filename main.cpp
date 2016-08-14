@@ -46,8 +46,13 @@ static void printData(void)
 	
 	lcd.setCursor(0, 2);
 	lcd.print("RPM: ");
+	lcd.print(tacho.currentRPM());
+	
+	lcd.setCursor(0, 3);
+	lcd.print("FRQ: ");
 	lcd.print(tacho.currentHz());
-	lcd.setCursor(10, 1);
+	lcd.setCursor(10, 3);
+	lcd.print(" Hz");
 }
 
 void setup()
@@ -63,9 +68,11 @@ void setup()
 	pinMode(PIN_LED, OUTPUT);
 	pinMode(PIN_TACHO, INPUT_PULLUP);
 	pinMode(PIN_POTENTIOMETER, OUTPUT);
+
 	lcd.begin(20, 4);
 	
 	tacho.begin();
+	lastMillis = millis();
 	
 	while ((millis() - lastMillis) < SAFETY_DELAY_MS)
 	{
@@ -92,11 +99,12 @@ void setup()
 
 void loop()
 {
+	tacho.tick();
 	potentiometerRaw = analogRead(PIN_POTENTIOMETER);
 	
 	ledPWM = (uint8_t)(255.0 * potentiometerRaw / 1023.0);
 	analogWrite(PIN_LED, ledPWM);
-	
+
 	printData();
-	delay(200);
+	delay(100);
 }

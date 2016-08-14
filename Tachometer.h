@@ -15,13 +15,13 @@ public:
 
 	void begin(void);
 	void end(void);
+	void tick(void);
 	
 	unsigned long currentRPM(void);
 	unsigned long currentHz(void);
+
 private:
 	uint8_t pin;
-	//static unsigned long volatile freqHz;
-	//static unsigned long lastMillis;
 	
 	static void tachoISR(void);
 };

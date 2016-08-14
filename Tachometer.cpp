@@ -8,18 +8,15 @@
 #include <Arduino.h>
 #include "Tachometer.h"
 
-#include <HardwareSerial.h>
-
-#define TIMEOUT_PERIOD_MS			(1000)
+#define TIMEOUT_PERIOD_MCS			(1000000)
 
 static unsigned long volatile freqHz;
-static unsigned long lastMillis;
-//static Timer timer;
+static unsigned long volatile lastMicros;
 
 Tachometer::Tachometer(uint8_t pin)
 {
 	freqHz = 0;
-	lastMillis = 0;
+	lastMicros = 0;
 	this->pin = pin;
 }
 
@@ -43,21 +40,24 @@ unsigned long Tachometer::currentHz()
 	return freqHz;
 }
 
+void Tachometer::tick(void)
+{
+	unsigned long currentMicros = micros();
+	if ((lastMicros != 0) && (currentMicros - lastMicros > TIMEOUT_PERIOD_MCS))
+	{
+		lastMicros = 0;
+		freqHz = 0;
+	}
+}
+
 void Tachometer::tachoISR()
 {
-	unsigned long currentMillis = millis();
-	unsigned long diff = currentMillis - lastMillis;
+	unsigned long currentMicros = micros();
+	unsigned long diff = currentMicros - lastMicros;
 
-	Serial.print("c:");
-	Serial.print(currentMillis);
-	Serial.print(" l:");
-	Serial.print(lastMillis);
-	Serial.print(" d:");
-	Serial.println(currentMillis - lastMillis);
-
-	if ((diff != 0) && (lastMillis != 0))
+	if ((diff != 0) && (lastMicros != 0))
 	{
-		freqHz = 1000UL / (currentMillis - lastMillis);
+		freqHz = 1000000UL / diff;
 	}
-	lastMillis = currentMillis;
+	lastMicros = currentMicros;
 }
