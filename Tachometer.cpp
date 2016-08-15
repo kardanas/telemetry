@@ -23,6 +23,7 @@ Tachometer::Tachometer(uint8_t pin)
 
 void Tachometer::begin(void)
 {
+	pinMode(pin, INPUT_PULLUP);
 	attachInterrupt(digitalPinToInterrupt(pin), tachoISR, FALLING);
 }
 

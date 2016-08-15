@@ -66,7 +66,6 @@ void setup()
 	Serial.println("Application started.");
 	
 	pinMode(PIN_LED, OUTPUT);
-	pinMode(PIN_TACHO, INPUT_PULLUP);
 	pinMode(PIN_POTENTIOMETER, OUTPUT);
 
 	lcd.begin(20, 4);
