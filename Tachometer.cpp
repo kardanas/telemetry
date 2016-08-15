@@ -8,9 +8,10 @@
 #include <Arduino.h>
 #include "Tachometer.h"
 
-#define TIMEOUT_PERIOD_MCS			(1000000)
+#define TIMEOUT_PERIOD_MCS			(1000000UL)
+#define MIN_PERIOD_MCS					(200UL)
 
-static unsigned long volatile freqHz;
+static float volatile freqHz;
 static unsigned long volatile lastMicros;
 
 Tachometer::Tachometer(uint8_t pin)
@@ -32,7 +33,7 @@ void Tachometer::end()
 
 unsigned long Tachometer::currentRPM()
 {
-	return freqHz * 60;
+	return freqHz * 60.0;
 }
 
 unsigned long Tachometer::currentHz()
@@ -55,9 +56,16 @@ void Tachometer::tachoISR()
 	unsigned long currentMicros = micros();
 	unsigned long diff = currentMicros - lastMicros;
 
-	if ((diff != 0) && (lastMicros != 0))
+	if (lastMicros != 0)
 	{
-		freqHz = 1000000UL / diff;
+		if (diff >= MIN_PERIOD_MCS) 
+		{
+			freqHz = 1000000.0 / diff;
+		}
+		else
+		{
+			freqHz = 1000000.0 / MIN_PERIOD_MCS;
+		}
 	}
 	lastMicros = currentMicros;
 }
