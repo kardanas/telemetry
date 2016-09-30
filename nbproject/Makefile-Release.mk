@@ -15,8 +15,8 @@ NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
 CC=avr-gcc
-CCC=avr-c++
-CXX=avr-c++
+CCC=avr-g++
+CXX=avr-g++
 FC=gfortran
 AS=avr-as
 
@@ -70,12 +70,12 @@ ${CND_DISTDIR}/${CND_CONF}/telemetry.exe: ${OBJECTFILES}
 ${OBJECTDIR}/Tachometer.o: Tachometer.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -DUBRR0H -DUBRR1H -DUBRR2H -DUBRR3H -I../core -I../core/core -I../libraries/LiquidCrystal -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Tachometer.o Tachometer.cpp
+	$(COMPILE.cc) -O2 -DUBRR0H -DUBRR1H -DUBRR2H -DUBRR3H -DARDUINO_ARCH_AVR -I../core -I../core/core -I../libraries/LiquidCrystal -I../libraries/Servo -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Tachometer.o Tachometer.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -DUBRR0H -DUBRR1H -DUBRR2H -DUBRR3H -I../core -I../core/core -I../libraries/LiquidCrystal -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O2 -DUBRR0H -DUBRR1H -DUBRR2H -DUBRR3H -DARDUINO_ARCH_AVR -I../core -I../core/core -I../libraries/LiquidCrystal -I../libraries/Servo -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:

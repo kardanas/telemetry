@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="95">
+<configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -25,7 +25,7 @@
   <confs>
     <conf name="Debug" type="1">
       <toolsSet>
-        <compilerSet>default</compilerSet>
+        <compilerSet>Arduino|WinAVR</compilerSet>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
@@ -35,9 +35,11 @@
             <pElem>../core</pElem>
             <pElem>../core/core</pElem>
             <pElem>../libraries/LiquidCrystal</pElem>
+            <pElem>../libraries/Servo</pElem>
           </incDir>
           <commandLine>-c -g -Os -Wall -Wextra -std=gnu11 -ffunction-sections -fdata-sections -MMD -fno-fat-lto-objects -mmcu=atmega2560 -DF_CPU=16000000L -DARDUINO=10610 -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR</commandLine>
           <preprocessorList>
+            <Elem>ARDUINO_ARCH_AVR</Elem>
             <Elem>UBRR0H</Elem>
             <Elem>UBRR1H</Elem>
             <Elem>UBRR2H</Elem>
@@ -49,9 +51,11 @@
             <pElem>../core</pElem>
             <pElem>../core/core</pElem>
             <pElem>../libraries/LiquidCrystal</pElem>
+            <pElem>../libraries/Servo</pElem>
           </incDir>
           <commandLine>-Os -Wall -Wextra -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -mmcu=atmega2560 -DF_CPU=16000000L -DARDUINO=10610 -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR</commandLine>
           <preprocessorList>
+            <Elem>ARDUINO_ARCH_AVR</Elem>
             <Elem>UBRR0H</Elem>
             <Elem>UBRR1H</Elem>
             <Elem>UBRR2H</Elem>
@@ -115,9 +119,11 @@
             <pElem>../core</pElem>
             <pElem>../core/core</pElem>
             <pElem>../libraries/LiquidCrystal</pElem>
+            <pElem>../libraries/Servo</pElem>
           </incDir>
           <commandLine>-c -g -Os -Wall -Wextra -std=gnu11 -ffunction-sections -fdata-sections -MMD -fno-fat-lto-objects -mmcu=atmega2560 -DF_CPU=16000000L -DARDUINO=10610 -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR</commandLine>
           <preprocessorList>
+            <Elem>ARDUINO_ARCH_AVR</Elem>
             <Elem>UBRR0H</Elem>
             <Elem>UBRR1H</Elem>
             <Elem>UBRR2H</Elem>
@@ -130,9 +136,11 @@
             <pElem>../core</pElem>
             <pElem>../core/core</pElem>
             <pElem>../libraries/LiquidCrystal</pElem>
+            <pElem>../libraries/Servo</pElem>
           </incDir>
           <commandLine>-Os -Wall -Wextra -std=gnu++11 -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -mmcu=atmega2560 -DF_CPU=16000000L -DARDUINO=10610 -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR</commandLine>
           <preprocessorList>
+            <Elem>ARDUINO_ARCH_AVR</Elem>
             <Elem>UBRR0H</Elem>
             <Elem>UBRR1H</Elem>
             <Elem>UBRR2H</Elem>
