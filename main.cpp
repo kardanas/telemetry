@@ -16,16 +16,16 @@
 #define PIN_LED							(13)
 #define PIN_SERVO           (12)
 
-#define PIN_LCD_RS	(53)
-#define PIN_LCD_EN	(51)
-#define PIN_LCD_DB0	(49)
-#define PIN_LCD_DB1	(47)
-#define PIN_LCD_DB2	(45)
-#define PIN_LCD_DB3	(43)
+#define PIN_LCD_RS	(42)
+#define PIN_LCD_EN	(52)
+#define PIN_LCD_DB4	(50)
+#define PIN_LCD_DB5	(48)
+#define PIN_LCD_DB6	(46)
+#define PIN_LCD_DB7	(44)
 
 #define SAFETY_DELAY_MS			(1000)
 
-static LiquidCrystal lcd(PIN_LCD_RS, PIN_LCD_EN, PIN_LCD_DB0, PIN_LCD_DB1, PIN_LCD_DB2, PIN_LCD_DB3);
+static LiquidCrystal lcd(PIN_LCD_RS, PIN_LCD_EN, PIN_LCD_DB4, PIN_LCD_DB5, PIN_LCD_DB6, PIN_LCD_DB7);
 static Tachometer tacho(PIN_TACHO);
 
 static Servo servo;
