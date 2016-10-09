@@ -15,7 +15,7 @@
 #define PIN_TACHO						(19)
 #define PIN_LED							(13)
 #define PIN_SERVO           (7)
-#define SERVO_MIN_US					(560)
+#define SERVO_MIN_US					(600)
 #define SERVO_MAX_US					(2450)
 #define SERVO_MIN_ANGLE				(0)
 #define SERVO_MAX_ANGLE				(180)
