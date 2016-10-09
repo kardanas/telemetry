@@ -14,7 +14,11 @@
 #define PIN_POTENTIOMETER		(0)
 #define PIN_TACHO						(19)
 #define PIN_LED							(13)
-#define PIN_SERVO           (12)
+#define PIN_SERVO           (7)
+#define SERVO_MIN_US					(550)
+#define SERVO_MAX_US					(2450)
+#define SERVO_MIN_ANGLE				(10)
+#define SERVO_MAX_ANGLE				(180)
 
 #define PIN_LCD_RS	(42)
 #define PIN_LCD_EN	(52)
@@ -71,10 +75,12 @@ void setup()
 	Serial.println("Application started.");
 	
 	pinMode(PIN_LED, OUTPUT);
+	pinMode(PIN_SERVO, OUTPUT);
 	pinMode(PIN_POTENTIOMETER, OUTPUT);
 
+	//servo.attach(PIN_SERVO, SERVO_MIN_US, SERVO_MAX_US);
 	servo.attach(PIN_SERVO);
-	//servo.write(0);
+	servo.write(SERVO_MIN_ANGLE);
 	delay(200);
 
 	lcd.begin(20, 4);
@@ -119,7 +125,7 @@ void loop()
 	ledPWM = (uint8_t)(255.0 * potentiometerRaw / 1023.0);
 	analogWrite(PIN_LED, ledPWM);
   
-	servo.write(map(potentiometerRaw, 0, 1023, 0, 180));
+	servo.write(map(potentiometerRaw, 0, 1023, SERVO_MIN_ANGLE, SERVO_MAX_ANGLE));
 
 	printData();
 	delay(100);
