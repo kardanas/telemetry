@@ -15,9 +15,9 @@
 #define PIN_TACHO						(19)
 #define PIN_LED							(13)
 #define PIN_SERVO           (7)
-#define SERVO_MIN_US					(550)
+#define SERVO_MIN_US					(560)
 #define SERVO_MAX_US					(2450)
-#define SERVO_MIN_ANGLE				(10)
+#define SERVO_MIN_ANGLE				(0)
 #define SERVO_MAX_ANGLE				(180)
 
 #define PIN_LCD_RS	(42)
@@ -78,8 +78,7 @@ void setup()
 	pinMode(PIN_SERVO, OUTPUT);
 	pinMode(PIN_POTENTIOMETER, OUTPUT);
 
-	//servo.attach(PIN_SERVO, SERVO_MIN_US, SERVO_MAX_US);
-	servo.attach(PIN_SERVO);
+	servo.attach(PIN_SERVO, SERVO_MIN_US, SERVO_MAX_US);
 	servo.write(SERVO_MIN_ANGLE);
 	delay(200);
 
